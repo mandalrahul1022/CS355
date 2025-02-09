@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Submitted Information</h1>
+        <div id="result"></div>
+    </div>
+    <div id="dark-mode-toggle">Toggle Dark Mode</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const params = new URLSearchParams(location.search);
+            const resultDiv = document.getElementById("result");
+            
+            params.forEach((value, key) => {
+                const row = document.createElement("div");
+                row.textContent = `${key}: ${value}`;
+                row.style.display = "flex";
+                row.style.justifyContent = "space-between";
+                resultDiv.appendChild(row);
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
