@@ -1,0 +1,43 @@
+body{
+    background-color: #345;
+    color:#ccc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16pt;
+}
+
+
+div{
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+
+button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16pt;
+    background-color: #465;
+    color:#ccc;
+    border-radius: 7px;
+    width: 100%;
+    border: solid 1px #678
+}
+button:hover{
+    background-color: #567;
+    cursor: pointer;
+}
+textarea{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 16pt;
+    background-color: #455;
+    width: 100%;
+    color:#ccc;
+    font-size: 16pt;
+    height: 2em;
+}
+
+#result{
+    white-space: pre;
+}
+.buttons{
+    display: flex;
+}
