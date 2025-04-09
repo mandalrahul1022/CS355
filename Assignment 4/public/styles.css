@@ -1,0 +1,76 @@
+
+:root {
+    --bg-color: #f0f0f0; 
+    --container-bg: #ffffff; 
+    --text-color: #333;
+    --button-color: #28a745;
+    --button-hover: #218838;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: var(--bg-color); 
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: var(--container-bg);
+    width: 400px; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    font-size: 18px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
+#image-container {
+    margin-top: 15px;
+    width: 200px;
+    height: 200px;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
