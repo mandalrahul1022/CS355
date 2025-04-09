@@ -1,0 +1,122 @@
+:root {
+    --bg-color2: rgba(236, 179, 221, 0.8);
+    --text-color: #0a0101;
+    --input-bg: #fff;
+    --input-text: #000;
+}
+
+:root[theme='dark'] {
+    --bg-color2: rgba(97, 133, 133, 0.8);
+    --text-color: #ddd;
+    --input-bg: #333;
+    --input-text: #fff;
+}
+
+body {
+    background: url('vacation.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    background-color: var(--bg-color2);
+    max-width: 600px;
+    margin: 5% auto;
+    padding: 1.5em;
+    border-radius: 1em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input, select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #888;
+}
+
+button {
+    padding: 10px;
+    margin: 1em 0;
+    border: none;
+    border-radius: 1em;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#dark-mode-toggle {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+#dark-mode-toggle:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.banner {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+/* Style for key-value display on page2.html */
+.entry-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+[theme='dark'] .entry-row {
+    background-color: rgba(0, 0, 0, 0.3);
+}
