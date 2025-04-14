@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <style>
+        * {
+            margin: 0.5em;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #333;
+            color: #ccc;
+            padding: 1em 4em;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: green;
+            color: #fff;
+        }
+
+        canvas {
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <button id="saveBtn">Save</button>
+    <button id="loadBtn">Load</button>
+    <br>
+    <input type="text" id="fileName" placeholder="Enter file name">
+    <br>
+    <canvas id="imgCanvas" width="500" height="500"></canvas>
+
+<script>
+    const saveBtn = document.getElementById('saveBtn');
+    const loadBtn = document.getElementById('loadBtn');
+    const fileName = document.getElementById('fileName');
+    const canvas = document.getElementById('imgCanvas');
+    const ctx = canvas.getContext('2d');
+
+    loadBtn.addEventListener('click', () => {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/png, image/jpeg';
+        fileInput.addEventListener('change', (event) => {
+            const fr = new FileReader();
+            fr.onload = function () {
+                const img = new Image();
+                img.onload = function () {
+                    const ratio = img.width / img.height; // Corrected: Defined ratio
+                    canvas.width = 500;
+                    canvas.height = 500 / ratio;
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                }
+                img.src = fr.result;
+            }
+            fr.readAsDataURL(fileInput.files[0]);
+            fileName.value = fileInput.files[0].name; // Simplified filename extraction
+        });
+        fileInput.click();
+    });
+
+    saveBtn.addEventListener('click', () => {
+        const downloadLink = document.createElement('a');
+        downloadLink.download = fileName.value || 'untitled.png'; // Default filename
+        downloadLink.href = canvas.toDataURL('image/png');
+        downloadLink.click();
+    });
+
+    // Canvas drawing logic
+    let drawing = false;
+
+    canvas.addEventListener('mousedown', () => {
+        drawing = 20 + 20 * Math.random(); // Random radius
+        const red = Math.random() * 255;
+        const green = Math.random() * 255;
+        const blue = Math.random() * 255;
+        ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, 0.2)`; // Corrected rgba format
+    });
+
+    canvas.addEventListener('mousemove', (event) => {
+        if (drawing) {
+            ctx.beginPath();
+            ctx.arc(event.offsetX, event.offsetY, drawing, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    });
+
+    canvas.addEventListener('mouseup', () => {
+        drawing = false;
+    });
+</script>
+</body>
+</html>
