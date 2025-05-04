@@ -10,7 +10,7 @@ body {
 }
 
 div {
-    font-size: 90%; /* make every div font-size 10% smaller than its parent's font-size */
+    font-size: 90%; 
     margin: 1em;
 }
 
