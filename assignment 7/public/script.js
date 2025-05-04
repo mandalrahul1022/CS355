@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Get references to DOM elements
     const loginScreen = document.getElementById('loginScreen');
     const registerScreen = document.getElementById('registerScreen');
     const homeScreen = document.getElementById('homeScreen');
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentUser = null;
 
-    // Helper function to switch screens
+
     function showScreen(screen) {
         loginScreen.classList.add('hidden');
         registerScreen.classList.add('hidden');
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         errorDiv.textContent = '';
     }
 
-    // Toggle between login and registration screens
+
     registerLink.addEventListener('click', (e) => {
         e.preventDefault();
         showScreen(registerScreen);
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showScreen(loginScreen);
     });
 
-    // Register new user (drop your internship profile)
+
     registerBtn.addEventListener('click', async () => {
         const username = document.getElementById('registerUsername').value;
         const password = document.getElementById('registerPassword').value;
@@ -61,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const user = await res.json();
             currentUser = user;
-            // Update home screen with user info
+
             document.getElementById('name').textContent = user.name;
             document.getElementById('username').textContent = user.username;
             showScreen(homeScreen);
@@ -71,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // User login
+
     loginBtn.addEventListener('click', async () => {
         const username = document.getElementById('loginUsername').value;
         const password = document.getElementById('loginPassword').value;
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             const user = await res.json();
-            // For demo purposes, password check is done on the client.
+
             if (user.password !== password) {
                 errorDiv.textContent = 'Incorrect password';
                 return;
@@ -97,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Update user information
+
     updateBtn.addEventListener('click', async () => {
         if (!currentUser) return;
         const username = currentUser.username;
@@ -123,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Delete user profile
+
     deleteBtn.addEventListener('click', async () => {
         if (!currentUser) return;
         const username = currentUser.username;
@@ -144,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Load and display list of all internship profiles
+
     async function loadUserList() {
         try {
             const res = await fetch('/users');
@@ -162,6 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initially display the login screen
+
     showScreen(loginScreen);
 });
